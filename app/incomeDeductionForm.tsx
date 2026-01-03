@@ -62,14 +62,18 @@ export default function IncomeDeductionForm({handleshotokuKojoKingaku, kyuyoSyot
                 onChange={(e)=>setkojinNenkinHokenRyoKojo(parseInt(e.target.value))}
                 />
             <p>合計額：{seimeiHokenRyoKojo}</p>
-            <small>平成24年1月1日以後に締結した保険契約等にのみ対応</small>
+            <p>
+                <small>平成24年1月1日以後に締結した保険契約等にのみ対応</small>
+            </p>
         <h3>地震保険料控除</h3>
         <input
         type="number"
         value={jishinHokenRyo}
         onChange={(e)=>setjishinHokenRyo(parseInt(e.target.value)/2)}
-        />      
-        <small>平成18年までに締結した長期損害保険料には非対応</small>
+        />
+        <p>
+            <small>平成18年までに締結した長期損害保険料には非対応</small>
+        </p>
     </section>
     );
 }
