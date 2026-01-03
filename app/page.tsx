@@ -2,16 +2,18 @@
 import Image from "next/image";
 import { useState } from "react";
 import IncomeForm from "./incomeForm";
+import IncomeDeductionForm from "./incomeDeductionForm";
 
 export default function Home() {
   const [kyuyoSyotokuKingaku, setKyuyoSyotokuKingaku] = useState<number>(0);
-  const [shotokuKoujoKingaku, setshotokuKoujoKingkazeiaku] = useState<number>(0);
+  const [shotokuKojoKingaku, setshotokuKoujoKingkazeiaku] = useState<number>(0);
   const [tokubetsukuminZeigakuKojo, settokubetsukuminZeigakuKojo] = useState<number>(0);
   const [tominZeigakuKojo, settominZeigakuKojo] = useState<number>(0);
 
   const handleKyuyoSyotokuKingaku = (input:number) => {setKyuyoSyotokuKingaku(input)};
+  const handleshotokuKojoKingaku = (input:number) => {setshotokuKoujoKingkazeiaku(input)};
 
-  let kazeiHyojunKingaku:number = kyuyoSyotokuKingaku - shotokuKoujoKingaku;
+  let kazeiHyojunKingaku:number = kyuyoSyotokuKingaku - shotokuKojoKingaku;
   let tokubetsukuminZei:number = kazeiHyojunKingaku * 0.06;
   let tominZei:number = kazeiHyojunKingaku * 0.04;
 
@@ -24,7 +26,8 @@ export default function Home() {
         <p>{kyuyoSyotokuKingaku}</p>
         <small>※所得金額調整控除は非対応です。</small>
         <h2>所得控除</h2>
-        <p>{shotokuKoujoKingaku}</p>
+        <IncomeDeductionForm handleshotokuKojoKingaku={handleshotokuKojoKingaku} kyuyoSyotokuKingaku={kyuyoSyotokuKingaku}></IncomeDeductionForm>
+        <p>所得控除合計額：{shotokuKojoKingaku}</p>
         <h2>課税標準額</h2>
         <p>{kazeiHyojunKingaku}</p>
         <h2>所得割額（税額控除前）</h2>
