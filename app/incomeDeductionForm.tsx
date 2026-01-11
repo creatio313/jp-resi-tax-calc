@@ -1,4 +1,5 @@
 import { useState } from "react";
+import NumForm from "./numForm";
 export default function IncomeDeductionForm({handleshotokuKojoKingaku, kyuyoSyotokuKingaku}) {
     const [syakaiHokenRyoKojo, setsyakaiHokenRyoKojo] = useState<number>(0);
     const [iDeCo, setiDeCo] = useState<number>(0);
@@ -15,10 +16,19 @@ export default function IncomeDeductionForm({handleshotokuKojoKingaku, kyuyoSyot
         calcSeimeiHokenRyoKojo(kaigoIryoHokenRyoKojo) + 
         calcSeimeiHokenRyoKojo(ippanSeimeiHokenRyoKojo) + 
         calcSeimeiHokenRyoKojo(kojinNenkinHokenRyoKojo);
-    let seimeiHokenRyoKojo = seimeihokenRyoKojoTotal>70000 ? 70000:seimeihokenRyoKojoTotal;
+
+    const seimeihokenRyo_KojoGendo = 70000;
+
+    let seimeiHokenRyoKojo = seimeihokenRyoKojoTotal>seimeihokenRyo_KojoGendo ? seimeihokenRyo_KojoGendo:seimeihokenRyoKojoTotal;
+    //NOTE:生命保険料と控除限度額のうち小さいほうを算出するから以下のように書ける？？
+    //let seimeiHokenRyoKojo = Math.min(seimeihokenRyoKojoTotal,seimeihokenRyo_KojoGendo);
 
     //地震保険料の計算
-    let jishinHokenRyoKojo = (jishinHokenRyo/2)>25000 ? 25000:jishinHokenRyo/2;
+    
+    const jishinHokenRyo_KojoGendo = 25000;
+    let jishinHokenRyoKojo = (jishinHokenRyo/2)>jishinHokenRyo_KojoGendo ? jishinHokenRyo_KojoGendo:jishinHokenRyo/2;
+    //NOTE:地震保険料/2と控除限度額のうち小さいほうを算出するから以下のように書ける？？
+    //let jishinHokenRyoKojo = Math.min(jishinHokenRyo/2,jishinHokenRyo_KojoGendo);
 
     //所得控除金額を算出し、親に渡す。
     let syotokuKojoTotal:number = 0;
@@ -36,46 +46,52 @@ export default function IncomeDeductionForm({handleshotokuKojoKingaku, kyuyoSyot
         <h3>基礎控除</h3>
         <p>{kisoKojo}</p>
         <h3>社会保険料控除</h3>
-        <input
+        <NumForm data={syakaiHokenRyoKojo} setDataState={setsyakaiHokenRyoKojo}></NumForm>
+        {/* <input
         type="number"
         value={syakaiHokenRyoKojo}
         onChange={(e)=>setsyakaiHokenRyoKojo(parseInt(e.target.value))}
-        />
+        /> */}
         <h3>小規模企業共済等掛金控除</h3>
-        <input
+        <NumForm data={iDeCo} setDataState={setiDeCo}></NumForm>
+        {/* <input
         type="number"
         value={iDeCo}
         onChange={(e)=>setiDeCo(parseInt(e.target.value))}
-        />
+        /> */}
         <h3>生命保険料控除</h3>
             <h4>介護医療保険料控除</h4>
-                <input
+            <NumForm data={kaigoIryoHokenRyoKojo} setDataState={setkaigoIryoHokenRyoKojo}></NumForm>
+                {/* <input
                 type="number"
                 value={kaigoIryoHokenRyoKojo}
                 onChange={(e)=>setkaigoIryoHokenRyoKojo(parseInt(e.target.value))}
-                />
+                /> */}
             <h4>一般生命保険料控除</h4>
-                <input
+            <NumForm data={ippanSeimeiHokenRyoKojo} setDataState={setippanSeimeiHokenRyoKojo}></NumForm>
+                {/* <input
                 type="number"
                 value={ippanSeimeiHokenRyoKojo}
                 onChange={(e)=>setippanSeimeiHokenRyoKojo(parseInt(e.target.value))}
-                />
+                /> */}
             <h4>個人年金保険料控除</h4>
-                <input
+            <NumForm data={kojinNenkinHokenRyoKojo} setDataState={setkojinNenkinHokenRyoKojo}></NumForm>
+                {/* <input
                 type="number"
                 value={kojinNenkinHokenRyoKojo}
                 onChange={(e)=>setkojinNenkinHokenRyoKojo(parseInt(e.target.value))}
-                />
+                /> */}
             <p>合計額：{seimeiHokenRyoKojo}</p>
             <p>
                 <small>平成24年1月1日以後に締結した保険契約等にのみ対応</small>
             </p>
         <h3>地震保険料控除</h3>
-        <input
+        <NumForm data={jishinHokenRyo} setDataState={setjishinHokenRyo}></NumForm>
+        {/* <input
         type="number"
         value={jishinHokenRyo}
         onChange={(e)=>setjishinHokenRyo(parseInt(e.target.value))}
-        />
+        /> */}
         <p>
             <small>平成18年までに締結した長期損害保険料には非対応</small>
         </p>
