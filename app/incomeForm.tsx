@@ -2,7 +2,7 @@
 import { useState } from "react";
 import NumForm from "./numForm";
 
-export default function IncomeForm({handleKyuyoSyotokuKingaku}) {
+export default function IncomeForm(handleKyuyoSyotokuKingaku: any ) {
   const [kyuyoShunyuKingaku, setKyuyoShyunyuKingaku] = useState<number>(0);
 
   //給与所得金額を算出し、親に渡す。
@@ -15,15 +15,11 @@ export default function IncomeForm({handleKyuyoSyotokuKingaku}) {
     <section>
       <h3>給与収入[年合計]</h3>
       <NumForm data={kyuyoShunyuKingaku} setDataState={setKyuyoShyunyuKingaku}></NumForm>
-      {/* <input
-        type="number"
-        value={kyuyoShunyuKingaku}
-        onChange={(e)=>setKyuyoShyunyuKingaku(parseInt(e.target.value))}
-      /> */}
     </section>
   );
 }
 /*
+（１）所得金額の計算
 給与収入金額から給与所得金額を算出する。
 参考：https://www.city.adachi.tokyo.jp/ze/kurashi/zekin/kesan-juminzegaku.html
 */
