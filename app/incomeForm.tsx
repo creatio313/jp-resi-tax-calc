@@ -13,12 +13,13 @@ export default function IncomeForm({handleKyuyoSyotokuKingaku}) {
 
   return (
     <section>
-      <h3>給与収入</h3>
-      <input
+      <h3>給与収入[年合計]</h3>
+      <NumForm data={kyuyoShunyuKingaku} setDataState={setKyuyoShyunyuKingaku}></NumForm>
+      {/* <input
         type="number"
         value={kyuyoShunyuKingaku}
         onChange={(e)=>setKyuyoShyunyuKingaku(parseInt(e.target.value))}
-      />
+      /> */}
     </section>
   );
 }
