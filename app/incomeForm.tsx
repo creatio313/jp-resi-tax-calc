@@ -2,7 +2,7 @@
 import { useState } from "react";
 import NumForm from "./numForm";
 
-export default function IncomeForm(handleKyuyoSyotokuKingaku: any ) {
+export default function IncomeForm({ handleKyuyoSyotokuKingaku }: { handleKyuyoSyotokuKingaku:any}) {
   const [kyuyoShunyuKingaku, setKyuyoShyunyuKingaku] = useState<number>(0);
 
   //給与所得金額を算出し、親に渡す。

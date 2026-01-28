@@ -1,7 +1,7 @@
 import { useState } from "react";
 import NumForm from "./numForm";
 export default function IncomeDeductionForm({ handleshotokuKojoKingaku, kyuyoSyotokuKingaku }:
-                                            { handleshotokuKojoKingaku:(val: number) => void ; kyuyoSyotokuKingaku:number }) {
+                                            { handleshotokuKojoKingaku:any ; kyuyoSyotokuKingaku:number }) {
     const [syakaiHokenRyoKojo, setsyakaiHokenRyoKojo] = useState<number>(0);
     const [iDeCo, setiDeCo] = useState<number>(0);
     const [kaigoIryoHokenRyoKojo, setkaigoIryoHokenRyoKojo] = useState<number>(0);

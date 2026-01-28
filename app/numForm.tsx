@@ -4,7 +4,7 @@
  * @param setDataState 親コンポーネントから渡される state 更新関数
  * @returns setDataState関数（関数は引数で指定）
  */
-export default function NumForm({ data, setDataState }: { data: number; setDataState: (val: number) => void }) {
+export default function NumForm({ data, setDataState }: { data: number; setDataState: any }) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     // 文字列を整数に変換

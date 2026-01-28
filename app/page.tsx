@@ -1,5 +1,5 @@
 'use client'
-import Image from "next/image";
+
 import { useState } from "react";
 import IncomeForm from "./incomeForm";
 import IncomeDeductionForm from "./incomeDeductionForm";
@@ -11,10 +11,10 @@ export default function Home() {
   const [tokubetsukuminZeigakuKojo, settokubetsukuminZeigakuKojo] = useState<number>(0);
   const [tominZeigakuKojo, settominZeigakuKojo] = useState<number>(0);
 
-  const handleKyuyoSyotokuKingaku = (input:number) => {setKyuyoSyotokuKingaku(input)};
-  const handleshotokuKojoKingaku = (input:number) => {setshotokuKojoKingaku(input)};
-  const handletokubetsukuminZeigakuKojo = (input:number) => {settokubetsukuminZeigakuKojo(input)};
-  const handletominZeigakuKojo = (input:number) => {settominZeigakuKojo(input)};
+  const handleKyuyoSyotokuKingaku = (input:any) => {setKyuyoSyotokuKingaku(input)};
+  const handleshotokuKojoKingaku = (input:any) => {setshotokuKojoKingaku(input)};
+  const handletokubetsukuminZeigakuKojo = (input:any) => {settokubetsukuminZeigakuKojo(input)};
+  const handletominZeigakuKojo = (input:any) => {settominZeigakuKojo(input)};
   //（３）課税標準額の計算
   let kazeiHyojunKingaku:number = Math.floor((kyuyoSyotokuKingaku - shotokuKojoKingaku)/1000) * 1000;
   //（４）所得割額（税額控除前）の計算

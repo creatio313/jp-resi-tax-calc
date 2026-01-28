@@ -1,7 +1,7 @@
 import { useState } from "react";
 import NumForm from "./numForm";
 export default function TaxDeductionForm({handletokubetsukuminZeigakuKojo, handletominZeigakuKojo, kazeiHyojunKingaku, kyuyoSyotokuKingaku}:
-                                         {handletokubetsukuminZeigakuKojo: (val: number) => void ; handletominZeigakuKojo: (val: number) => void ; kazeiHyojunKingaku: number; kyuyoSyotokuKingaku: number}) {
+                                         {handletokubetsukuminZeigakuKojo: any ; handletominZeigakuKojo: any ; kazeiHyojunKingaku: number; kyuyoSyotokuKingaku: number}) {
     const [haitoKojo, sethaitoKojo] = useState<number>(0);
     const [jutakuloanKojo, setjutakuloanKojo] = useState<number>(0);
     const [kifukinKojo, setkifukinKojo] = useState<number>(0);
