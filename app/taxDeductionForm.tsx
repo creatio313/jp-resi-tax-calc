@@ -18,8 +18,8 @@ export default function TaxDeductionForm({handletokubetsukuminZeigakuKojo, handl
     let tominZeigakuKojoTotal:number = 0;
 
     handletokubetsukuminZeigakuKojo(tokubetsukuminZeigakuKojoTotal);
-    handletominZeigakuKojo(tominZeigakuKojoTotal);
 
+    handletominZeigakuKojo(tominZeigakuKojoTotal);
     return (
     <section>
         <ul>
