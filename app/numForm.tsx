@@ -11,7 +11,7 @@ export default function NumForm({ data, setDataState }: { data: number; setDataS
     const parsedValue = parseInt(value.replace(/^0+/, ''), 10);
 
     // 変換結果が NaN (数字以外) の場合は 0 をセットし、それ以外は変換後の数値をセットする
-      setDataState(isNaN(parsedValue) ? 0 :parsedValue);
+    setDataState(isNaN(parsedValue) ? 0 : parsedValue);
   };
 
   return (

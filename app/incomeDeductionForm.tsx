@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NumForm from "./numForm";
 export default function IncomeDeductionForm({ handleshotokuKojoKingaku, kyuyoSyotokuKingaku }:
-                                            { handleshotokuKojoKingaku:any ; kyuyoSyotokuKingaku:number }) {
+    { handleshotokuKojoKingaku: any; kyuyoSyotokuKingaku: number }) {
     const [syakaiHokenRyoKojo, setsyakaiHokenRyoKojo] = useState<number>(0);
     const [iDeCo, setiDeCo] = useState<number>(0);
     const [kaigoIryoHokenRyoKojo, setkaigoIryoHokenRyoKojo] = useState<number>(0);
@@ -12,7 +12,7 @@ export default function IncomeDeductionForm({ handleshotokuKojoKingaku, kyuyoSyo
     //（２）所得控除額の計算
 
     //基礎控除の計算
-    let kisoKojo:number = calcKisoKojo(kyuyoSyotokuKingaku);
+    let kisoKojo: number = calcKisoKojo(kyuyoSyotokuKingaku);
 
     //生命保険料控除の計算
     let seimeihokenRyoKojoTotal =
@@ -31,7 +31,7 @@ export default function IncomeDeductionForm({ handleshotokuKojoKingaku, kyuyoSyo
     let jishinHokenRyoKojo = Math.min(jishinHokenRyo / 2, jishinHokenRyo_KojoGendo);
 
     //所得控除金額を算出し、親に渡す。
-    let syotokuKojoTotal:number = 0;
+    let syotokuKojoTotal: number = 0;
     syotokuKojoTotal =
         kisoKojo +
         syakaiHokenRyoKojo +
@@ -39,7 +39,9 @@ export default function IncomeDeductionForm({ handleshotokuKojoKingaku, kyuyoSyo
         seimeiHokenRyoKojo +
         jishinHokenRyoKojo;
 
-    handleshotokuKojoKingaku(syotokuKojoTotal);
+    useEffect(() => {
+        handleshotokuKojoKingaku(syotokuKojoTotal);
+    }, [syotokuKojoTotal]);
 
     return (
         <section>
